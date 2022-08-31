@@ -21,8 +21,6 @@ function HomePage() {
   const [SelectedCategory, setSelectedCategory] =
     useState<String>("smartphones");
   const [data, setdata] = useState<product[]>([]);
-  const [loadedNumber, setloadedNumber] = useState(0);
-  const [hasMore, setHasMore] = useState(true);
   const fetchCategories = async () => {
     const res = await fetch("https://dummyjson.com/products/categories");
     const json = await res.json();
@@ -32,20 +30,14 @@ function HomePage() {
   const fetchData = async () => {
     console.log(SelectedCategory);
     const res = await fetch(
-      `https://dummyjson.com/products/category/${SelectedCategory}?limit=3&skip=${loadedNumber}&select=id,title,price,description,category,thumbnail,brand`
+      `https://dummyjson.com/products/category/${SelectedCategory}?limit=5&select=id,title,price,description,category,thumbnail,brand`
     );
     const json = await res.json();
-    if (json.products.length === 0) {
-      setHasMore(false);
-    }
     setdata(data.concat(json.products));
-    setloadedNumber(loadedNumber + 3);
   };
 
   const categoryChange = async () => {
-    setloadedNumber(0);
     setdata([]);
-    setHasMore(true);
   };
 
   useEffect(() => {
@@ -71,7 +63,7 @@ function HomePage() {
           next={() => {
             fetchData();
           }}
-          hasMore={hasMore}
+          hasMore={true}
           loader={<h4>Loading...</h4>}
           endMessage={
             <p style={{ textAlign: "center" }}>
