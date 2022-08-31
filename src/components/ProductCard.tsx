@@ -62,10 +62,18 @@ function ProductCard(props: ProductProps) {
         <img style={styles.img} src={props.data.thumbnail.toString()}></img>
       </div>
       <div style={{ width: "50%", padding: "40px", textAlign: "left" }}>
-        <h1 style={styles.h1}>{props.data.title}</h1>
+        <h1 style={styles.h1}>
+          {props.data.title.length > 15
+            ? props.data.title.substring(0, 15) + "..."
+            : props.data.title}
+        </h1>
         <h4 style={styles.h4}>{props.data.brand}</h4>
         <h2 style={styles.h2}>{"$" + props.data.price}</h2>
-        <p style={styles.p}>{props.data.description}</p>
+        <p style={styles.p}>
+          {props.data.description.length > 60
+            ? props.data.description.substring(0, 60) + "..."
+            : props.data.description}
+        </p>
       </div>
     </div>
   );
