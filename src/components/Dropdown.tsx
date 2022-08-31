@@ -29,8 +29,4 @@ interface SelectProps {
   categoryChange: Function;
 }
 
-// interface OptionType {
-//   value: String;
-//   label: String;
-// }
 export default Dropdown;

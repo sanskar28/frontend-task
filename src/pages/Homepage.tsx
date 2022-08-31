@@ -3,7 +3,6 @@ import { useState } from "react";
 import Dropdown from "../components/Dropdown";
 import InfiniteScroll from "react-infinite-scroll-component";
 import ProductCard from "../components/ProductCard";
-//import InfiniteScroll from "react-infinite-scroller";
 
 const styles = {
   container: {
@@ -58,8 +57,9 @@ function HomePage() {
             categoryChange={categoryChange}
           />
         </div>
+
         <InfiniteScroll
-          dataLength={data.length} //This is important field to render the next data
+          dataLength={data.length}
           next={() => {
             fetchData();
           }}

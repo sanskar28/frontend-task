@@ -1,5 +1,3 @@
-import React from "react";
-
 const styles = {
   container: {
     marginLeft: "5%",
