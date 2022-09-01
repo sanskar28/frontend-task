@@ -70,9 +70,17 @@ function HomePage() {
               <b>These are all the items available in the category</b>
             </p>
           }>
-          {data?.map((e) => (
-            <ProductCard data={e} />
-          ))}
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "row",
+              justifyContent: "space-around",
+              flexWrap: "wrap",
+            }}>
+            {data?.map((e) => (
+              <ProductCard data={e} />
+            ))}
+          </div>
         </InfiniteScroll>
       </div>
     </div>
